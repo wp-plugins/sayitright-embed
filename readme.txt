@@ -45,8 +45,11 @@ Added a launch button shortcode
 
 == Upgrade Notice ==
 
+= 0.0.3 =
+This version fixes the javascript issue in the admin editor
+
 = 0.0.2 =
-This version fixes the issue when loading a station froma  subdomain
+This version fixes the issue when loading a station from a  subdomain
 
 = 0.0.1 =
 This is the first version of the plugin
