@@ -3,7 +3,7 @@ Contributors: Ryan Whitlie
 Tags: media, sayitright, embed
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 0.0.2
+Stable tag: 0.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ None yet.
 1. Installation finished.
 
 == Changelog ==
+
+= 0.0.3 =
+Fixed javascript issue in admin
 
 = 0.0.2 =
 Fixed subdomain station issue
