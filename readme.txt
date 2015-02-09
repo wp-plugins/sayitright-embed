@@ -3,7 +3,7 @@ Contributors: Ryan Whitlie
 Tags: media, sayitright, embed
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: 0.0.3
+Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,8 +33,8 @@ None yet.
 
 == Changelog ==
 
-= 0.0.3 =
-Fixed javascript issue in admin
+= 0.1.0 =
+Fixed http/https protocol request errors
 
 = 0.0.2 =
 Fixed subdomain station issue
@@ -45,11 +45,8 @@ Added a launch button shortcode
 
 == Upgrade Notice ==
 
-= 0.0.3 =
-This version fixes the javascript issue in the admin editor
-
 = 0.0.2 =
-This version fixes the issue when loading a station from a  subdomain
+This version fixes the issue when loading a station froma  subdomain
 
 = 0.0.1 =
 This is the first version of the plugin
