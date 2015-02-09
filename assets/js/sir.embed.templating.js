@@ -14,7 +14,7 @@ function embedTplNavEl(data, tag){
 	var str = '<div class="navbar-header">';
 
 	if( typeof data.site.icon_image_url !== 'undefined' && typeof data.request.host !== 'undefined' ){
-		if( data.site.icon_image_url !== 'null' )
+		if( data.site.icon_image_url !== 'null' && data.site.icon_image_url !== null )
 			str += '<a class="brand" href="http://'+data.request.host+'"><img src="'+data.site.icon_image_url+'/resize/fill/width/50/height/50/format.jpg" title="Icon" alt="Icon" /></a>';
 		str += '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sir-embed-navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>';
 		str += '<div class="collapse navbar-collapse" id="sir-embed-navbar-collapse">';

@@ -2,6 +2,11 @@
 
 	"use strict";
 
+	var protocol = 'http';
+
+	if( window.location.host.indexOf('https://') > -1 )
+		protocol = 'https';
+
 	var launchers = d.getElementsByClassName('sir-embed-item');
 	console.log(launchers);
 	if( typeof launchers !== 'undefined' && launchers.length > 0 ){

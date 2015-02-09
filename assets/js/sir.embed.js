@@ -42,6 +42,14 @@ program-xxx
 !(function(){
 	'use strict';
 
+	/*=====================================================================
+	Define Protocol
+	=====================================================================*/
+	var protocol = 'http';
+
+	if( window.location.host.indexOf('https://') > -1 )
+		protocol = 'https';
+
 	var appTools = {
 		isEmbedLoaded: function(src){
 			var scripts = document.getElementsByTagName("script");
@@ -263,10 +271,7 @@ program-xxx
 					if( l.indexOf(json.request.host) > -1 ){ // Check if external
 						var link = app.getRoutLink(l),
 							_link = link.replace(json.request.host, '');
-						if( _link.indexOf('http://') > -1 )
-							_link = _link.replace('http://', '');
-						if( _link.indexOf('https://') > -1 )
-							_link = _link.replace('https://', '');
+
 						var state = '';
 						if( _link === '/' || _link === '' ){
 							state = 'home';
@@ -347,15 +352,19 @@ program-xxx
 										json_link = l+'.json';
 									}
 								}
-								if( json_link.indexOf('http:') < 0 )
-									json_link = 'http://'+json_link;
+
 								if( appTools.subDomain(json_link) === false ){
 									json_link = json_link.replace('://', '://www.');
 									if( json_link.indexOf('www.www.') > -1 )
 										json_link = json_link.replace('www.www.', 'www.');
 								}
-								// if( json_link.indexOf('www.') < 0 )
-								// 	json_link = json_link.replace('://', '://www.');
+
+								json_link = json_link.replace('https://', protocol+'://');
+								json_link = json_link.replace('http://', protocol+'://');
+
+								// If no protocol set
+								if( json_link.indexOf('http://') < 0 && json_link.indexOf('https://') < 0 )
+									json_link = protocol+'://'+json_link;
 
 								Lib.ajax.getJSON({
 									url: json_link,
@@ -857,7 +866,6 @@ program-xxx
 				len = link.length,
 				last = link[(len-1)],
 				json_link = '';
-			// console.log(link);
 			if( last === '/' ){
 				if( link.substr(len -5) === '.com/' || link.substr(len -4) === '.be/' ){// Is Home
 					json_link = link+'index.json';
@@ -874,8 +882,9 @@ program-xxx
 					json_link = link+'.json';
 				}
 			}
-			if( json_link.indexOf('http:') < 0 )
-				json_link = 'http://'+json_link;
+			// if( json_link.indexOf('http:') < 0 )
+			// 	json_link = 'http://'+json_link;
+
 			if( appTools.subDomain(json_link) === false ){
 				json_link = json_link.replace('://', '://www.');
 				if( json_link.indexOf('www.www.') > -1 )
@@ -883,6 +892,13 @@ program-xxx
 			}
 			// if( json_link.indexOf('www.') < 0 )
 			// 	json_link = json_link.replace('://', '://www.');
+
+			json_link = json_link.replace('https://', protocol+'://');
+			json_link = json_link.replace('http://', protocol+'://');
+
+			// If no protocol set
+			if( json_link.indexOf('http://') < 0 && json_link.indexOf('https://') < 0 )
+				json_link = protocol+'://'+json_link;
 
 			Lib.ajax.getJSON({
 				url: json_link,
@@ -973,5 +989,38 @@ program-xxx
 
 		return false;
 	};
+
+
+	/*=====================================================================
+	Define Embeds & Lightboxes
+	=====================================================================*/
+	function defineElements(){
+		var embeds = document.getElementsByClassName('sir-embed-item');
+		if( typeof embeds !== 'undefined' && embeds.length > 0 ){
+			for( var i = 0; i <= embeds.length - 1; i++ ){
+				embeds[i].sirEmbed({
+					"url": embeds[i].dataset.url,
+					"width": embeds[i].dataset.width,
+					"height": embeds[i].dataset.height
+				});
+			}
+		}
+
+		var lightboxes = document.getElementsByClassName('sir-lightbox-item');
+		if( typeof lightboxes !== 'undefined' && lightboxes.length > 0 ){
+			for( var j = 0; j <= lightboxes.length - 1; j++ ){
+				lightboxes[j].sirLightbox({
+					"url": lightboxes[j].dataset.url,
+					"button": "true"
+				});
+			}
+		}
+	}
+
+
+	/*=====================================================================
+	On Page Load
+	=====================================================================*/
+	window.onload=defineElements;
 
 })();

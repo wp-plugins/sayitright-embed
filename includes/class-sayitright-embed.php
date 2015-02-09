@@ -69,7 +69,7 @@ if( !class_exists('Sayitright_Embed') )
 			/* Embed */
 			wp_enqueue_script( 'sir-embed', SAYITRIGHT_EMBED_URI . 'assets/js/sir.embed.js', array(), NULL, true );
 			/* Launcher */
-			wp_enqueue_script( 'sir-embed-launcher', SAYITRIGHT_EMBED_URI . 'assets/js/sir.launcher.js', array(), NULL, true );
+			// wp_enqueue_script( 'sir-embed-launcher', SAYITRIGHT_EMBED_URI . 'assets/js/sir.launcher.js', array(), NULL, true );
 		}
 
 		/**

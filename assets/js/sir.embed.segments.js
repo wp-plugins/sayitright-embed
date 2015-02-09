@@ -9,6 +9,7 @@ Element.prototype.sirEmbedSegment = function(obj){
 	var protocol = 'https';
 	if (window.location.protocol != "https:")
 		protocol = 'http';
+
 	var segments = {
 			settings: {
 				win: window,
